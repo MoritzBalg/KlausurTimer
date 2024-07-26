@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Prüfung</title>
+    <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <header>
+        <img src="img/logo.svg" alt="logo">
+    </header>
+    <main>
+        <span id="title"></span>
+        <span id="date"></span>
+        <span id="aids"></span>
+        <span id="time"></span>
+
+        <!-- Setup area -->
+        <dialog id="modal_setup">
+            <form id="form_setup">
+                <h3>Einstellungen</h3>
+                <label for="in_title">Name:</label>
+                <input id="in_title" name="in_title" type="text" placeholder="Klausur Name">
+                <label for="in_date">Datum:</label>
+                <input id="in_date" name="in_date" type="date">
+                <label for="in_aids">Hilfsmittel</label>
+                <input id="in_aids" name="in_aids" type="text" value="Keine">
+                <label for="in_time">Zeit:</label>
+                <input id="in_time" name="in_time" type="time" value="02:00">
+                <div id="button_section">
+                    <input type="button" class="button" onclick="toggleModal('modal_setup')" value="Abbrechen">
+                    <input type="submit" class="button" value="Speichern">
+                </div>
+            </form>
+        </dialog>
+
+
+
+    </main>
+    <footer>
+        <span>
+            <span onclick="toggleModal('modal_setup')">Setup</span>
+            <span onclick="start()">Start</span>
+            <span onclick="stop()">Stop</span>
+            <span onclick="reset()">Reset</span>
+        </span>
+        <img src="img/github-mark-white.svg" alt="github">
+        
+    </footer>
+</body>
+</html>
