@@ -64,7 +64,6 @@ footer{
         span{
             padding: 0.5rem;
             border-radius: 10px;
-
             &:hover{
             background-color: rgb(55, 55, 56);
             color: whitesmoke;
