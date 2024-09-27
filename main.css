@@ -35,13 +35,17 @@ main{
 }
 
 #time{
-    margin-top: 2rem;
+    margin: 2rem 0;
     font-size: 6rem;
 }
 
 #title{
     font-weight: 600;
     font-size: 2rem;
+}
+
+#message{
+    text-align: center;
 }
 
 header, footer{

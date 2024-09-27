@@ -49,10 +49,10 @@ window.addEventListener('load', () => {
 
 function loadContent() {
     config.time_left = config.time;
-    document.getElementById('title').innerHTML = config.title;
-    document.getElementById('date').innerHTML = '- ' + config.date.toLocaleDateString(undefined, {day: '2-digit', month: '2-digit', year: 'numeric'}) + ' -';
-    document.getElementById('aids').innerHTML = 'Hilfsmittel: ' + config.aids;
-    document.getElementById('time').innerHTML = secondsToHms(config.time);
+    document.getElementById('title').innerText = config.title;
+    document.getElementById('date').innerText = '- ' + config.date.toLocaleDateString(undefined, {day: '2-digit', month: '2-digit', year: 'numeric'}) + ' -';
+    document.getElementById('aids').innerText = 'Hilfsmittel: ' + config.aids;
+    reset();
 }
 
 function updateTime() {
@@ -62,7 +62,8 @@ function updateTime() {
         );
     } else {
         stop();
-        document.getElementById('time').innerHTML = 'ENDE';
+        document.getElementById('time').innerText = 'ENDE';
+        document.getElementById('message').innerText = 'Die Klausur ist beendet.\nLegen sie ihre Stifte weg.'
     }
 }
 
@@ -89,7 +90,7 @@ function enableCurrentTimeDisplay(){
 
 function disableCurrentTimeDisplay(){
     clearInterval(currentTimeIntervalId);
-    document.getElementById('current-time').innerText = '';
+    document.getElementById('current-time').innerHTML = '';
     currentTimeIntervalId = undefined;
 }
 
@@ -117,6 +118,7 @@ function start() {
         }else{
             logEvent(new Date(), 'Klausur gestartet');
         }
+        document.getElementById('message').innerText = '';
     }
 }
 
@@ -127,6 +129,7 @@ function stop() {
         if (config.time_left > 0) {
             logEvent(new Date(), 'Klausur pausiert');
             paused = true;
+            document.getElementById('message').innerText = 'Die Klausur wurde pausiert.';
         } else {
             logEvent(new Date(), 'Klausur beendet');
         }
@@ -135,7 +138,8 @@ function stop() {
 
 function reset() {
     stop();
-    document.getElementById('time').innerHTML = secondsToHms(config.time);
+    document.getElementById('time').innerText = secondsToHms(config.time);
+    document.getElementById('message').innerText = 'Die Klausur hat noch nicht begonnen.';
     config.time_left = config.time;
     clearLogs();
 }
