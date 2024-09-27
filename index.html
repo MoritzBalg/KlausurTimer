@@ -12,6 +12,7 @@
 <body>
     <header>
         <img src="img/logo.svg" alt="logo">
+        <span id="current-time"></span>
     </header>
     <main>
         <span id="title"></span>
@@ -31,6 +32,10 @@
                 <input id="in_aids" name="in_aids" type="text" value="Keine">
                 <label for="in_time">Zeit:</label>
                 <input id="in_time" name="in_time" type="time" value="02:00">
+                <div>
+                    <input id="in_show-time" name="in_show-time" type="checkbox">
+                    <label for="in_show-time">Zeige aktuelle Uhrzeit</label>
+                </div>
                 <div id="button_section">
                     <input type="button" class="button" onclick="toggleModal('modal_setup')" value="Abbrechen">
                     <input type="submit" class="button" value="Speichern">

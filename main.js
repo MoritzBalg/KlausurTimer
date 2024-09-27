@@ -1,12 +1,17 @@
+const currentTimeUpdateInterval = 1000;
+const timerUpdateInterval = 1000;
+
 const config = {
     title: undefined,
     aids: undefined,
     date: undefined,
     time: undefined,
     time_left: undefined,
+    showTime: undefined
 };
 
 let intervalId = undefined;
+let currentTimeIntervalId = undefined;
 
 window.addEventListener('load', () => {
     document.getElementById('in_date').valueAsDate = new Date();
@@ -18,6 +23,13 @@ window.addEventListener('load', () => {
         config.title = formData.get('in_title');
         config.date = new Date(formData.get('in_date'));
         config.aids = formData.get('in_aids');
+        config.showTime = formData.get('in_show-time');
+        if(config.showTime && !currentTimeIntervalId){
+            enableCurrentTimeDisplay();
+        }
+        if(!config.showTime && currentTimeIntervalId){
+            disableCurrentTimeDisplay();
+        }
         let seconds = 0;
         seconds += formData.get('in_time').split(':')[0] * 3600;
         seconds += formData.get('in_time').split(':')[1] * 60;
@@ -46,6 +58,11 @@ function updateTime() {
     }
 }
 
+function updateCurrentTime() {
+    console.log('updating current time');
+    document.getElementById('current-time').innerText = (new Date).toLocaleTimeString();
+}
+
 function secondsToHms(seconds) {
     seconds = Number(seconds);
     const h = Math.floor(seconds / 3600);
@@ -58,10 +75,20 @@ function secondsToHms(seconds) {
     return hDisplay + ':' + mDisplay + ':' + sDisplay;
 }
 
+function enableCurrentTimeDisplay(){
+    currentTimeIntervalId = setInterval(updateCurrentTime, currentTimeUpdateInterval);
+}
+
+function disableCurrentTimeDisplay(){
+    clearInterval(currentTimeIntervalId);
+    document.getElementById('current-time').innerText = '';
+    currentTimeIntervalId = undefined;
+}
+
 function start() {
     if (!intervalId) {
         updateTime();
-        intervalId = setInterval(updateTime, 1000);
+        intervalId = setInterval(updateTime, timerUpdateInterval);
     }
 }
 
