@@ -16,7 +16,7 @@ window.addEventListener('load', () => {
         e.preventDefault();
         const formData = new FormData(form);
         config.title = formData.get('in_title');
-        config.date = formData.get('in_date');
+        config.date = new Date(formData.get('in_date'));
         config.aids = formData.get('in_aids');
         let seconds = 0;
         seconds += formData.get('in_time').split(':')[0] * 3600;
@@ -30,7 +30,7 @@ window.addEventListener('load', () => {
 function loadContent() {
     config.time_left = config.time;
     document.getElementById('title').innerHTML = config.title;
-    document.getElementById('date').innerHTML = '- ' + config.date + ' -';
+    document.getElementById('date').innerHTML = '- ' + config.date.toLocaleDateString(undefined, {day: '2-digit', month: '2-digit', year: 'numeric'}) + ' -';
     document.getElementById('aids').innerHTML = 'Hilfsmittel: ' + config.aids;
     document.getElementById('time').innerHTML = secondsToHms(config.time);
 }
