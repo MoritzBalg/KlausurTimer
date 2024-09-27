@@ -25,7 +25,13 @@ main{
     justify-content: center;
     align-items: center;
     font-size: x-large;
-    
+    position: relative;
+}
+
+#display-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #time{
@@ -126,4 +132,17 @@ input{
     justify-content: space-between;
     gap: 1rem;
     margin-top: 1rem;
+}
+
+#logs-container{
+    position: absolute;
+    bottom: 0;
+    right: min(10%, 2rem);
+    width: 600px;
+    max-width: 80%;
+    background-color: darkgrey;
+    padding: 0.5rem;
+}
+#logs-container>table{
+    margin-top: 0.5rem;
 }

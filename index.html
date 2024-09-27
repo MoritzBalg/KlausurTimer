@@ -15,10 +15,12 @@
         <span id="current-time"></span>
     </header>
     <main>
-        <span id="title"></span>
-        <span id="date"></span>
-        <span id="aids"></span>
-        <span id="time"></span>
+        <div id="display-wrapper">
+            <span id="title"></span>
+            <span id="date"></span>
+            <span id="aids"></span>
+            <span id="time"></span>
+        </div>
 
         <!-- Setup area -->
         <dialog id="modal_setup">
@@ -36,6 +38,10 @@
                     <input id="in_show-time" name="in_show-time" type="checkbox">
                     <label for="in_show-time">Zeige aktuelle Uhrzeit</label>
                 </div>
+                <div>
+                    <input id="in_show-logs" name="in_show-logs" type="checkbox">
+                    <label for="in_show-logs">Zeige Ereignis-Log</label>
+                </div>
                 <div id="button_section">
                     <input type="button" class="button" onclick="toggleModal('modal_setup')" value="Abbrechen">
                     <input type="submit" class="button" value="Speichern">
@@ -44,7 +50,14 @@
         </dialog>
 
 
+        <details id="logs-container">
+            <summary>Ereignis-Log</summary>
+            <table>
+                <tbody id="logs">
 
+                </tbody>
+            </table>
+        </details>
     </main>
     <footer>
         <span>

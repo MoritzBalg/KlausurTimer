@@ -7,11 +7,13 @@ const config = {
     date: undefined,
     time: undefined,
     time_left: undefined,
-    showTime: undefined
+    showTime: false,
+    showLogs: false
 };
 
 let intervalId = undefined;
 let currentTimeIntervalId = undefined;
+let paused = false;
 
 window.addEventListener('load', () => {
     document.getElementById('in_date').valueAsDate = new Date();
@@ -23,12 +25,18 @@ window.addEventListener('load', () => {
         config.title = formData.get('in_title');
         config.date = new Date(formData.get('in_date'));
         config.aids = formData.get('in_aids');
-        config.showTime = formData.get('in_show-time');
+        config.showTime = formData.get('in_show-time') ?? false;
+        config.showLogs = formData.get('in_show-logs') ?? false;
         if(config.showTime && !currentTimeIntervalId){
             enableCurrentTimeDisplay();
         }
         if(!config.showTime && currentTimeIntervalId){
             disableCurrentTimeDisplay();
+        }
+        if(config.showLogs){
+            document.getElementById('logs-container').style.display = 'block';
+        }else{
+            document.getElementById('logs-container').style.display = 'none';
         }
         let seconds = 0;
         seconds += formData.get('in_time').split(':')[0] * 3600;
@@ -85,22 +93,51 @@ function disableCurrentTimeDisplay(){
     currentTimeIntervalId = undefined;
 }
 
+function logEvent(timeStamp, text){
+    const entry = document.createElement('tr');
+    const time = document.createElement('td');
+    const message = document.createElement('td');
+    time.innerText = timeStamp.toLocaleTimeString();
+    message.innerText = text;
+    entry.appendChild(time);
+    entry.appendChild(message);
+    document.getElementById('logs').appendChild(entry);
+}
+
+function clearLogs(){
+    document.getElementById('logs').innerHTML = '';
+}
+
 function start() {
     if (!intervalId) {
         updateTime();
         intervalId = setInterval(updateTime, timerUpdateInterval);
+        if(paused){
+            logEvent(new Date(), 'Klausur fortgesetzt');
+        }else{
+            logEvent(new Date(), 'Klausur gestartet');
+        }
     }
 }
 
 function stop() {
-    clearInterval(intervalId);
-    intervalId = undefined;
+    if(intervalId) {
+        clearInterval(intervalId);
+        intervalId = undefined;
+        if (config.time_left > 0) {
+            logEvent(new Date(), 'Klausur pausiert');
+            paused = true;
+        } else {
+            logEvent(new Date(), 'Klausur beendet');
+        }
+    }
 }
 
 function reset() {
     stop();
     document.getElementById('time').innerHTML = secondsToHms(config.time);
     config.time_left = config.time;
+    clearLogs();
 }
 
 function toggleModal(id) {
