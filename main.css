@@ -34,14 +34,29 @@ main{
     align-items: center;
 }
 
+#date{
+    margin-top: 0.5rem;
+}
+
 #time{
-    margin: 2rem 0;
+    margin: 1rem 0 2rem 0;
     font-size: 6rem;
 }
 
 #title{
     font-weight: 600;
+    font-size: 3rem;
+}
+
+#subtitle{
     font-size: 2rem;
+}
+
+.title-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
 #message{
@@ -99,7 +114,18 @@ footer{
 #form_setup{
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0.6rem;
+}
+
+#form_setup>.checkbox-group{
+    display: flex;
+    justify-self: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#form_setup>div:not(#button_section)>input:not([type="checkbox"]){
+    width: 100%;
 }
 
 dialog{
@@ -149,4 +175,32 @@ input{
 }
 #logs-container>table{
     margin-top: 0.5rem;
+}
+
+#toilet-wrapper{
+    background-color: darkgrey;
+    padding: 0.5rem;
+    position: absolute;
+    top: 0;
+    right: min(10%, 2rem);
+    display: flex;
+    gap: 1rem;
+}
+
+#toilet-wrapper>span{
+    height: 3rem;
+    width: 3rem;
+    font-size: 1.5rem;
+    border-radius: 0.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    background-color: forestgreen;
+}
+
+#toilet-wrapper>span.occupied{
+    background-color: orangered;
 }

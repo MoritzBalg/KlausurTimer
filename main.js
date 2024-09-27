@@ -3,12 +3,14 @@ const timerUpdateInterval = 1000;
 
 const config = {
     title: undefined,
+    subtitle: undefined,
     aids: undefined,
     date: undefined,
     time: undefined,
     time_left: undefined,
     showTime: false,
-    showLogs: false
+    showLogs: false,
+    toiletCount: 0
 };
 
 let intervalId = undefined;
@@ -23,10 +25,12 @@ window.addEventListener('load', () => {
         e.preventDefault();
         const formData = new FormData(form);
         config.title = formData.get('in_title');
+        config.subtitle = formData.get('in_subtitle');
         config.date = new Date(formData.get('in_date'));
         config.aids = formData.get('in_aids');
         config.showTime = formData.get('in_show-time') ?? false;
         config.showLogs = formData.get('in_show-logs') ?? false;
+        config.toiletCount = parseInt(formData.get('in_toilets') ?? 0);
         if(config.showTime && !currentTimeIntervalId){
             enableCurrentTimeDisplay();
         }
@@ -38,6 +42,7 @@ window.addEventListener('load', () => {
         }else{
             document.getElementById('logs-container').style.display = 'none';
         }
+        initializeToilets();
         let seconds = 0;
         seconds += formData.get('in_time').split(':')[0] * 3600;
         seconds += formData.get('in_time').split(':')[1] * 60;
@@ -50,8 +55,9 @@ window.addEventListener('load', () => {
 function loadContent() {
     config.time_left = config.time;
     document.getElementById('title').innerText = config.title;
+    document.getElementById('subtitle').innerText = config.subtitle;
     document.getElementById('date').innerText = '- ' + config.date.toLocaleDateString(undefined, {day: '2-digit', month: '2-digit', year: 'numeric'}) + ' -';
-    document.getElementById('aids').innerText = 'Hilfsmittel: ' + config.aids;
+    document.getElementById('aids').innerText = 'Zugelassene Hilfsmittel: ' + config.aids;
     reset();
 }
 
@@ -92,6 +98,27 @@ function disableCurrentTimeDisplay(){
     clearInterval(currentTimeIntervalId);
     document.getElementById('current-time').innerHTML = '';
     currentTimeIntervalId = undefined;
+}
+
+function initializeToilets(){
+    document.getElementById('toilet-wrapper').innerHTML = '';
+    for(let i = 0; i < config.toiletCount; i++){
+        const toiletDisplay = document.createElement('span');
+        toiletDisplay.innerText = 'WC';
+        toiletDisplay['data-occupied'] = false;
+        toiletDisplay.addEventListener('click', () => toggleToiletOccupation(toiletDisplay));
+        document.getElementById('toilet-wrapper').appendChild(toiletDisplay);
+    }
+}
+
+function toggleToiletOccupation(toiletDisplay){
+    if(toiletDisplay['data-occupied']){
+        toiletDisplay['data-occupied'] = false;
+        toiletDisplay.classList.remove('occupied');
+    } else{
+        toiletDisplay['data-occupied'] = true;
+        toiletDisplay.classList.add('occupied');
+    }
 }
 
 function logEvent(timeStamp, text){

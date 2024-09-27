@@ -15,10 +15,15 @@
         <span id="current-time"></span>
     </header>
     <main>
+        <div id="toilet-wrapper"></div>
+
         <div id="display-wrapper">
-            <span id="title"></span>
-            <span id="date"></span>
+            <div class="title-wrapper">
+                <span id="title"></span>
+                <span id="subtitle"></span>
+            </div>
             <span id="aids"></span>
+            <span id="date"></span>
             <span id="time"></span>
             <span id="message"></span>
         </div>
@@ -27,22 +32,36 @@
         <dialog id="modal_setup">
             <form id="form_setup">
                 <h3>Einstellungen</h3>
-                <label for="in_title">Name:</label>
-                <input id="in_title" name="in_title" type="text" placeholder="Klausur Name">
-                <label for="in_date">Datum:</label>
-                <input id="in_date" name="in_date" type="date">
-                <label for="in_aids">Hilfsmittel</label>
-                <input id="in_aids" name="in_aids" type="text" value="Keine">
-                <label for="in_time">Zeit:</label>
-                <input id="in_time" name="in_time" type="time" value="02:00">
                 <div>
+                    <label for="in_title">Name:</label>
+                    <input id="in_title" name="in_title" type="text" placeholder="Klausur Name">
+                </div>
+                <div>
+                    <label for="in_subtitle">Untertitel:</label>
+                    <input id="in_subtitle" name="in_subtitle" type="text">
+                </div>
+                <div>
+                    <label for="in_date">Datum:</label>
+                    <input id="in_date" name="in_date" type="date">
+                </div>
+                <div>
+                    <label for="in_aids">Zugelassene Hilfsmittel</label>
+                    <input id="in_aids" name="in_aids" type="text" value="Keine">
+                </div>
+                <div>
+                    <label for="in_time">Zeit:</label>
+                    <input id="in_time" name="in_time" type="time" value="02:00">
+                </div>
+                <div class="checkbox-group">
                     <input id="in_show-time" name="in_show-time" type="checkbox">
                     <label for="in_show-time">Zeige aktuelle Uhrzeit</label>
                 </div>
-                <div>
+                <div class="checkbox-group">
                     <input id="in_show-logs" name="in_show-logs" type="checkbox">
                     <label for="in_show-logs">Zeige Ereignis-Log</label>
                 </div>
+                <label for="in_toilets">Anzahl verfügbarer WCs:</label>
+                <input id="in_toilets" name="in_toilets" type="number" value="0">
                 <div id="button_section">
                     <input type="button" class="button" onclick="toggleModal('modal_setup')" value="Abbrechen">
                     <input type="submit" class="button" value="Speichern">
