@@ -5,10 +5,10 @@ const config = {
     title: undefined,
     subtitle: undefined,
     aids: undefined,
-    date: undefined,
     time: undefined,
     time_left: undefined,
     showTime: false,
+    showDate: false,
     showLogs: false,
     toiletCount: 0
 };
@@ -18,7 +18,6 @@ let currentTimeIntervalId = undefined;
 let paused = false;
 
 window.addEventListener('load', () => {
-    document.getElementById('in_date').valueAsDate = new Date();
     toggleModal('modal_setup');
     const form = document.getElementById('form_setup');
     form.addEventListener('submit', (e) => {
@@ -26,9 +25,9 @@ window.addEventListener('load', () => {
         const formData = new FormData(form);
         config.title = formData.get('in_title');
         config.subtitle = formData.get('in_subtitle');
-        config.date = new Date(formData.get('in_date'));
         config.aids = formData.get('in_aids');
         config.showTime = formData.get('in_show-time') ?? false;
+        config.showDate = formData.get('in_show-date') ?? false;
         config.showLogs = formData.get('in_show-logs') ?? false;
         config.toiletCount = parseInt(formData.get('in_toilets') ?? 0);
         if(config.showTime && !currentTimeIntervalId){
@@ -36,6 +35,11 @@ window.addEventListener('load', () => {
         }
         if(!config.showTime && currentTimeIntervalId){
             disableCurrentTimeDisplay();
+        }
+        if(config.showDate){
+            enableDateDisplay();
+        }else{
+            disableDateDisplay();
         }
         if(config.showLogs){
             document.getElementById('logs-container').style.display = 'block';
@@ -56,7 +60,6 @@ function loadContent() {
     config.time_left = config.time;
     document.getElementById('title').innerText = config.title;
     document.getElementById('subtitle').innerText = config.subtitle;
-    document.getElementById('date').innerText = '- ' + config.date.toLocaleDateString(undefined, {day: '2-digit', month: '2-digit', year: 'numeric'}) + ' -';
     document.getElementById('aids').innerText = 'Zugelassene Hilfsmittel: ' + config.aids;
     reset();
 }
@@ -98,6 +101,14 @@ function disableCurrentTimeDisplay(){
     clearInterval(currentTimeIntervalId);
     document.getElementById('current-time').innerHTML = '';
     currentTimeIntervalId = undefined;
+}
+
+function enableDateDisplay(){
+    document.getElementById('date').innerText = `- ${(new Date).toLocaleDateString(undefined, {day: '2-digit', month: '2-digit', year: 'numeric'})} -`;
+}
+
+function disableDateDisplay(){
+    document.getElementById('date').innerText = '';
 }
 
 function initializeToilets(){
