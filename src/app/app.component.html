@@ -1,0 +1,21 @@
+<div class="main-grid">
+  <header>
+    <div class="logo-wrapper">
+      <img src="logo.svg" alt="Logo H-BRS">
+    </div>
+    <app-clock></app-clock>
+  </header>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+  <footer>
+    <div class="controls">
+      <button (click)="openSettings()" >
+        <i class="bi bi-gear"></i> Einstellungen
+      </button>
+      <app-timer-controls></app-timer-controls>
+    </div>
+    <app-github-link></app-github-link>
+  </footer>
+</div>
+<app-settings-modal #settingsModal></app-settings-modal>

@@ -1,0 +1,11 @@
+<app-modal [title]="'Einstellungen'" (onClose)="onClose()" [initiallyOpen]="true">
+  <app-exam-settings></app-exam-settings>
+  <details class="drawer">
+    <summary>Anzeigeeinstellungen</summary>
+    <app-display-settings></app-display-settings>
+  </details>
+  <div class="controls">
+    <button (click)="abort()" >abbrechen</button>
+    <button (click)="saveChanges()" >speichern</button>
+  </div>
+</app-modal>

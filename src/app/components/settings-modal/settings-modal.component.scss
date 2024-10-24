@@ -1,0 +1,24 @@
+.drawer{
+  margin-top: 1rem;
+}
+
+.controls{
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+details > summary{
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+button{
+  background-color: lightgray;
+  padding: 0.25rem 0.5rem;
+}
+
+button:hover{
+  background-color: darkgray;
+}

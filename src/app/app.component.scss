@@ -1,0 +1,52 @@
+.main-grid{
+  display: grid;
+  grid-template-rows: min-content auto min-content;
+  width: 100vw;
+  height: 100vh;
+}
+
+header, footer{
+  background-color: var(--primary);
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+}
+
+app-github-link{
+  margin-left: auto;
+}
+
+.logo-wrapper{
+  position: relative;
+  height: 100%;
+}
+
+.logo-wrapper img{
+  height: 3.5rem;
+  object-fit: contain;
+}
+
+main{
+
+}
+
+router-outlet{
+  width: 100%;
+  height: 100%;
+}
+
+app-clock{
+  font-size: 2rem;
+}
+
+.controls, .controls>*:not(button){
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+::ng-deep .controls button{
+  font-size: 1.2rem;
+}

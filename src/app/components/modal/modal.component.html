@@ -1,0 +1,11 @@
+<div class="modal-container">
+  <div class="modal-header">
+    <span>{{title}}</span>
+    <div class="close-button" (click)="close()" >
+      <i class="bi bi-x-lg" ></i>
+    </div>
+  </div>
+  <div class="modal-body">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="content-wrapper">
+  <app-exam-info></app-exam-info>
+  <app-timer></app-timer>
+  <app-status-display></app-status-display>
+</div>
+<div class="toilet-display-wrapper">
+  <app-toilet-display></app-toilet-display>
+</div>
+<details id="event-log-drawer" *ngIf="displayConfig.displayEventLog">
+  <summary>Ereignis-Log</summary>
+  <app-event-log ></app-event-log>
+</details>

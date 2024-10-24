@@ -1,0 +1,25 @@
+:host{
+  height: 3rem;
+  width: 3rem;
+  font-size: 1.5rem;
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+}
+
+:host.vacant{
+  background-color: forestgreen;
+}
+
+:host.occupied{
+  background-color: orangered;
+}
+
+:host.blocked{
+  background-color: lightgray;
+}
+

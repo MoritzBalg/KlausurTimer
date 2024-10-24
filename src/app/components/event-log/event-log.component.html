@@ -1,0 +1,8 @@
+<table>
+  <tbody>
+    <tr *ngFor="let event of eventService.getLog()">
+      <td>{{event.timestamp | date : 'HH:mm:ss'}}</td>
+      <td>{{event.message}}</td>
+    </tr>
+  </tbody>
+</table>
