@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { globals } from '../../../globals';
 import { DisplayConfig } from '../../models/display-config';
 import { FormsModule } from '@angular/forms';
 import { ToiletService } from '../../services/toilet.service';
-import { cloneObject, updateObject } from '../../lib/util';
+import { SettingsService } from '../../services/settings.service';
+import { cloneObject } from '../../lib/util';
 
 @Component({
   selector: 'app-display-settings',
@@ -15,21 +15,24 @@ import { cloneObject, updateObject } from '../../lib/util';
   styleUrl: './display-settings.component.scss'
 })
 export class DisplaySettingsComponent implements OnInit{
+  originalDisplayConfig!: DisplayConfig;
   tempDisplayConfig!: DisplayConfig
 
-  constructor(private toiletService: ToiletService) {
+  constructor(private toiletService: ToiletService, private settingsService: SettingsService) {
   }
 
   ngOnInit(): void {
-    this.reset();
+    this.settingsService.getDisplayConfig().subscribe((displayConfig: DisplayConfig) => {
+      this.tempDisplayConfig = cloneObject(displayConfig);
+      this.originalDisplayConfig = cloneObject(displayConfig);
+    });
   }
 
   public reset(): void{
-    this.tempDisplayConfig = cloneObject(globals.displayConfig);
+    this.tempDisplayConfig = cloneObject(this.originalDisplayConfig);
   }
 
   public saveChanges(): void{
-    updateObject(globals.displayConfig, this.tempDisplayConfig);
-    this.toiletService.setToiletCount(globals.displayConfig.toiletCount);
+    this.settingsService.setDisplayConfig(this.tempDisplayConfig);
   }
 }

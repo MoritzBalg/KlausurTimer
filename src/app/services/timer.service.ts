@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ExamState } from '../models/exam-state';
 import { EventService } from './event.service';
-import { v4 as uuidv4 } from 'uuid';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { SettingsService } from './settings.service';
+import { ExamConfig } from '../models/exam-config';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,20 @@ export class TimerService{
   private startTime?: Date;
   private elapsedDuration?: number;
 
-  constructor(private eventService: EventService) {
+  constructor(private eventService: EventService, private settingsService: SettingsService) {
+    this.settingsService.getExamConfig().subscribe((examConfig: ExamConfig) => {
+      if(examConfig.duration !== this.duration){
+        this.setTimer(examConfig.duration);
+        this.stateChange.next(this.state);
+      }
+    });
+
+    addEventListener('storage', (event: StorageEvent) => this.handleStorageEvent(event));
+    
+    this.loadStartTime();
+    this.loadBonus();
+    this.loadElapsedDuration();
+    this.loadExamState();
   }
 
   /**
@@ -27,37 +41,37 @@ export class TimerService{
   }
 
   public addBonus(duration: number): void {
-    this.bonus += duration;
+    this.setBonus(this.bonus + duration);
   }
 
   public resetTimer(): void{
     this.setExamState(ExamState.INITIAL);
-    this.bonus = 0;
-    this.startTime = undefined;
+    this.setBonus(0);
+    this.setStartTime(undefined);
   }
 
   public startTimer(): void{
-    this.startTime = new Date();
+    this.setStartTime(new Date());
     this.eventService.log('Klausur gestartet');
     this.setExamState(ExamState.RUNNING);
   }
 
   public pauseTimer(): void{
-    this.elapsedDuration = Date.now() - (this.startTime?.getTime() ?? 0);
+    this.setElapsedDuration(Date.now() - (this.startTime?.getTime() ?? 0));
     this.eventService.log('Klausur pausiert');
     this.setExamState(ExamState.PAUSED);
   }
 
   public resumeTimer(): void{
-    this.startTime = new Date(Date.now() - (this.elapsedDuration ?? 0));
-    this.elapsedDuration = undefined;
+    this.setStartTime(new Date(Date.now() - (this.elapsedDuration ?? 0)));
+    this.setElapsedDuration(undefined);
     this.eventService.log('Klausur fortgesetzt');
     this.setExamState(ExamState.RUNNING);
   }
 
   public stopTimer(): void{
     if(this.state === ExamState.FINISHED) return;
-    this.startTime = undefined;
+    this.setStartTime(undefined);
     this.eventService.log('Klausur beendet');
     this.setExamState(ExamState.FINISHED);
   }
@@ -97,6 +111,54 @@ export class TimerService{
 
   setExamState(examState: ExamState): void {
     this.state = examState;
+    localStorage.setItem('examState', examState.toString());
     this.stateChange.next(this.state);
+  }
+
+  setStartTime(date: Date | undefined): void{
+    this.startTime = date;
+    localStorage.setItem('startTime', date?.getTime().toString() ?? '');
+  }
+
+  setBonus(duration: number): void{
+    this.bonus = duration;
+    localStorage.setItem('bonus', this.bonus.toString());
+  }
+
+  setElapsedDuration(duration: number | undefined): void{
+    this.elapsedDuration = duration;
+    localStorage.setItem('elapsedDuration', this.elapsedDuration?.toString() ?? '');
+  }
+
+  handleStorageEvent(event: StorageEvent): void {
+    if(event.key === 'examState'){
+      this.loadExamState();
+    }else if(event.key === 'startTime'){
+      this.loadStartTime();
+    }else if(event.key === 'bonus'){
+      this.loadBonus();
+    }else if(event.key === 'elapsedDuration'){
+      this.loadElapsedDuration();
+    }
+  }
+
+  loadExamState(): void{
+    this.state = parseInt(localStorage.getItem('examState') ?? '0');
+    this.stateChange.next(this.state);
+  }
+
+  loadStartTime(): void{
+    const val: string | null = localStorage.getItem('startTime');
+    this.startTime = val ? new Date(parseInt(val)) : undefined;
+  }
+
+  loadBonus(): void{
+    const val: string = localStorage.getItem('bonus') ?? '0';
+    this.bonus = parseInt(val);
+  }
+
+  loadElapsedDuration(): void{
+    const val: string | null = localStorage.getItem('elapsedDuration');
+    this.elapsedDuration = val ? parseInt(val) : undefined;
   }
 }

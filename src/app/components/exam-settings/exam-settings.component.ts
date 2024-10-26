@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ExamConfig } from '../../models/exam-config';
-import { globals } from '../../../globals';
 import { FormsModule } from '@angular/forms';
 import { TimerService } from '../../services/timer.service';
 import { ExamState } from '../../models/exam-state';
-import { cloneObject, updateObject } from '../../lib/util';
+import { cloneObject } from '../../lib/util';
+import { SettingsService } from '../../services/settings.service';
 
 @Component({
   selector: 'app-exam-settings',
@@ -16,25 +16,32 @@ import { cloneObject, updateObject } from '../../lib/util';
   styleUrl: './exam-settings.component.scss'
 })
 export class ExamSettingsComponent implements OnInit{
-
+  originalExamConfig!: ExamConfig;
   tempExamConfig!: ExamConfig
   tempDuration: string = '00:00';
 
-  constructor(public timerService: TimerService) {
+  constructor(public timerService: TimerService, private settingsService: SettingsService) {
   }
 
   ngOnInit() {
-    this.reset();
+    this.settingsService.getExamConfig().subscribe((examConfig: ExamConfig) => {
+      this.tempExamConfig = cloneObject(examConfig);
+      this.originalExamConfig = cloneObject(examConfig);
+      this.convertDuration();
+    });
   }
 
   public saveChanges(): void{
     this.tempExamConfig.duration = this.hmToMilliseconds(this.tempDuration);
-    updateObject(globals.examConfig, this.tempExamConfig);
-    this.timerService.setTimer(globals.examConfig.duration);
+    this.settingsService.setExamConfig(this.tempExamConfig);
   }
 
   public reset(): void {
-    this.tempExamConfig = cloneObject(globals.examConfig);
+    this.tempExamConfig = cloneObject(this.originalExamConfig);
+    this.convertDuration();
+  }
+
+  private convertDuration(): void{
     this.tempDuration = this.millisecondsToHm(this.tempExamConfig.duration);
   }
 
