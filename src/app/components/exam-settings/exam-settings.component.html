@@ -1,22 +1,22 @@
 <div class="form">
   <div class="input-group">
-    <label for="exam-title-input">Titel</label>
-    <input type="text" placeholder="Beispielthema" id="exam-title-input" [(ngModel)]="tempExamConfig.title">
+    <label for="exam-title-input" i18n>Titel</label>
+    <input type="text" placeholder="Beispielthema" i18n-placeholder id="exam-title-input" [(ngModel)]="tempExamConfig.title">
   </div>
   <div class="input-group">
-    <label for="exam-subtitle-input">Untertitel</label>
-    <input type="text" placeholder="Professor:in" id="exam-subtitle-input" [(ngModel)]="tempExamConfig.subTitle">
+    <label for="exam-subtitle-input" i18n>Untertitel</label>
+    <input type="text" placeholder="Professor:in" i18n-placeholder id="exam-subtitle-input" [(ngModel)]="tempExamConfig.subTitle">
   </div>
   <div class="input-group">
-    <label for="exam-subtitle-input">Raum</label>
+    <label for="exam-subtitle-input" i18n>Raum</label>
     <input type="text" id="exam-room-input" [(ngModel)]="tempExamConfig.room">
   </div>
   <div class="input-group">
-    <label for="exam-resources-input">Zugelassene Hilfsmittel</label>
+    <label for="exam-resources-input" i18n>Zugelassene Hilfsmittel</label>
     <input type="text" placeholder="Hilfsmittel" id="exam-resources-input" [(ngModel)]="tempExamConfig.resources">
   </div>
   <div class="input-group">
-    <label for="exam-duration-input">Bearbeitungszeit</label>
+    <label for="exam-duration-input" i18n>Bearbeitungszeit</label>
     <input type="time" id="exam-duration-input" [(ngModel)]="tempDuration" [disabled]="timerService.getState() === ExamState.RUNNING">
   </div>
 </div>

@@ -1,6 +1,6 @@
 <ng-container [ngSwitch]="timerService.getState()">
-  <span *ngSwitchCase="ExamState.INITIAL">Die Klausur hat noch nicht begonnen</span>
-  <span *ngSwitchCase="ExamState.RUNNING"></span>
-  <span *ngSwitchCase="ExamState.PAUSED">Die Klausur wurde pausiert</span>
-  <span *ngSwitchCase="ExamState.FINISHED">Die Klausur ist beendet.<br>Legen sie ihre Stifte weg!</span>
+  <span *ngSwitchCase="ExamState.INITIAL" i18n>Die Klausur hat noch nicht begonnen</span>
+  <span *ngSwitchCase="ExamState.RUNNING" i18n></span>
+  <span *ngSwitchCase="ExamState.PAUSED" i18n>Die Klausur wurde pausiert</span>
+  <span *ngSwitchCase="ExamState.FINISHED" i18n>Die Klausur ist beendet.<br>Legen sie ihre Stifte weg!</span>
 </ng-container>

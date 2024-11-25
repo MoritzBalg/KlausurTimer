@@ -1,0 +1,32 @@
+{
+  "locale": "en",
+  "translations": {
+    "6123713545391702330": "{$START_ITALIC_TEXT}{$CLOSE_ITALIC_TEXT} Settings ",
+    "8368126302467222531": "Show current time",
+    "333964623845479667": "Show Date",
+    "6597801207351463925": "Show event-log",
+    "4045087336175174765": "Number of available toilets",
+    "5134235660856461112": "Authorized resources: {$INTERPOLATION}",
+    "3516494453193947151": "Title",
+    "1102842280935176982": "example subject",
+    "1763940721409433016": "Subtitle",
+    "8786010644708569134": "professor",
+    "4099387866558226974": "Room",
+    "2449208719825116048": "Authorized resources",
+    "321337288550572128": "Exam duration",
+    "3396314321097880980": "Display settings",
+    "4894648697918868112": "abort",
+    "9009834045170002171": "save",
+    "7558761586905687468": "The exam has not yet started",
+    "4247278580436928759": "The exam was paused",
+    "2341561610325007724": "The exam has ended.{$LINE_BREAK}Lay down your pens!",
+    "2395559531442271219": "{$START_ITALIC_TEXT}{$CLOSE_ITALIC_TEXT} Start\n",
+    "5941066127736455548": "{$START_ITALIC_TEXT}{$CLOSE_ITALIC_TEXT} Pause\n",
+    "7633886815060499": "{$START_ITALIC_TEXT}{$CLOSE_ITALIC_TEXT} Resume\n",
+    "7443372590871912542": "{$START_ITALIC_TEXT}{$CLOSE_ITALIC_TEXT} Stop\n",
+    "8438172436341036842": "{$START_ITALIC_TEXT}{$CLOSE_ITALIC_TEXT} Reset\n",
+    "2792465394201976214": "FINISHED",
+    "2346610843325862691": "Event-log",
+    "8027079266248707567": "none"
+  }
+}

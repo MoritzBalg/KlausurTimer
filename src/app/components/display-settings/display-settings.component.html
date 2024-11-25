@@ -1,18 +1,18 @@
 <div class="form">
   <div class="input-group checkbox-input">
     <input type="checkbox" id="display-clock-input" [(ngModel)]="tempDisplayConfig.displayClock">
-    <label for="display-clock-input">Zeige aktuelle Uhrzeit</label>
+    <label for="display-clock-input" i18n>Zeige aktuelle Uhrzeit</label>
   </div>
   <div class="input-group checkbox-input">
     <input type="checkbox" id="display-date-input" [(ngModel)]="tempDisplayConfig.displayDate">
-    <label for="display-date-input">Zeige Datum</label>
+    <label for="display-date-input" i18n>Zeige Datum</label>
   </div>
   <div class="input-group checkbox-input">
     <input type="checkbox" id="display-event-log-input" [(ngModel)]="tempDisplayConfig.displayEventLog">
-    <label for="display-event-log-input">Zeige Ereignis-Log</label>
+    <label for="display-event-log-input" i18n>Zeige Ereignis-Log</label>
   </div>
   <div class="input-group">
-    <label for="toilet-count-input">Anzahl verfügbarer WCs</label>
+    <label for="toilet-count-input" i18n>Anzahl verfügbarer WCs</label>
     <input type="number" id="toilet-count-input" min="0" step="1" max="10" [(ngModel)]="tempDisplayConfig.toiletCount">
   </div>
 </div>

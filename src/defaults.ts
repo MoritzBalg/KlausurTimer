@@ -5,7 +5,7 @@ export const examConfig: ExamConfig = {
   title: '',
   subTitle: '',
   room: '',
-  resources: 'keine',
+  resources: $localize`keine`,
   duration: 7200000 // 2h in milliseconds
 };
 

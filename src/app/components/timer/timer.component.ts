@@ -29,7 +29,7 @@ export class TimerComponent implements OnInit, OnDestroy {
     if(examState === ExamState.INITIAL){
       this.displayTime(this.millisecondsToHms(this.timerService.getCumulatedDuration()));
     }else if(examState === ExamState.FINISHED){
-      this.displayTime('ENDE');
+      this.displayTime($localize`ENDE`);
     }
   }
 
