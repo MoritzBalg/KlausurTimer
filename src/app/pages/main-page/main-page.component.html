@@ -1,6 +1,8 @@
 <div class="content-wrapper">
   <app-exam-info></app-exam-info>
+  <span id="date" *ngIf="displayConfig.displayDate">{{date | date : 'dd.MM.yyyy'}}</span>
   <app-timer></app-timer>
+  <app-duration-display *ngIf="displayConfig.displayDuration"></app-duration-display>
   <app-status-display></app-status-display>
 </div>
 <div class="toilet-display-wrapper">

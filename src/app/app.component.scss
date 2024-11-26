@@ -1,6 +1,6 @@
 .main-grid{
   display: grid;
-  grid-template-rows: min-content auto min-content;
+  grid-template-rows: min-content 1fr min-content;
   width: 100vw;
   height: 100vh;
 }
@@ -29,7 +29,7 @@ app-github-link{
 }
 
 main{
-
+  overflow: hidden;
 }
 
 router-outlet{

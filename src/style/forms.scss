@@ -30,3 +30,39 @@ button:hover{
 button:active{
   color: whitesmoke;
 }
+
+.radio-button-group{
+  display: flex;
+  flex-direction: row;
+}
+
+.radio-button-group label{
+  padding: 0.5rem;
+  cursor: pointer;
+  background-color: darkgrey;
+  display: block;
+}
+
+.radio-button-group label:hover{
+  background-color: gray;
+}
+
+.radio-button-group input:checked+label{
+  background-color: gray;
+}
+
+.radio-button-group label:active{
+  color: whitesmoke;
+}
+
+.radio-button-group label:first-of-type{
+  border-radius: 0.25rem 0 0 0.25rem ;
+}
+
+.radio-button-group label:last-of-type{
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.radio-button-group input[type=radio]{
+  display: none;
+}

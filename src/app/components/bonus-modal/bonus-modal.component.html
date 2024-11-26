@@ -1,0 +1,10 @@
+<app-modal [title]="'Zeitbonus'" i18n-title (onClose)="onClose()" [initiallyOpen]="false">
+  <div class="line">
+    <input type="text" [(ngModel)]="bonusValue">
+    <span i18n>Minuten</span>
+  </div>
+  <div class="controls">
+    <button (click)="abort()" i18n >abbrechen</button>
+    <button (click)="saveChanges()" i18n >hinzufügen</button>
+  </div>
+</app-modal>

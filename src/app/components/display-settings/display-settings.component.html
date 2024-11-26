@@ -8,6 +8,10 @@
     <label for="display-date-input" i18n>Zeige Datum</label>
   </div>
   <div class="input-group checkbox-input">
+    <input type="checkbox" id="display-duration-input" [(ngModel)]="tempDisplayConfig.displayDuration">
+    <label for="display-duration-input" i18n>Zeige Laufzeit</label>
+  </div>
+  <div class="input-group checkbox-input">
     <input type="checkbox" id="display-event-log-input" [(ngModel)]="tempDisplayConfig.displayEventLog">
     <label for="display-event-log-input" i18n>Zeige Ereignis-Log</label>
   </div>

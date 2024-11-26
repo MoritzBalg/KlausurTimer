@@ -4,6 +4,7 @@ import { EventService } from './event.service';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { SettingsService } from './settings.service';
 import { ExamConfig } from '../models/exam-config';
+import { millisecondsToHms } from '../lib/util';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class TimerService{
   private state: ExamState = ExamState.INITIAL;
   private stateChange: Subject<ExamState> = new BehaviorSubject<ExamState>(this.state);
   private duration: number = 2 * 60 * 60 * 1000;
+  private durationChange: Subject<void> = new Subject<void>();
   private bonus: number = 0;
   private startTime?: Date;
   private elapsedDuration?: number;
@@ -25,7 +27,7 @@ export class TimerService{
     });
 
     addEventListener('storage', (event: StorageEvent) => this.handleStorageEvent(event));
-    
+
     this.loadStartTime();
     this.loadBonus();
     this.loadElapsedDuration();
@@ -38,15 +40,21 @@ export class TimerService{
    */
   public setTimer(duration: number): void {
     this.duration = duration;
+    this.durationChange.next();
+  }
+
+  public getDurationChange(): Subject<void>{
+    return this.durationChange;
   }
 
   public addBonus(duration: number): void {
     this.setBonus(this.bonus + duration);
+    this.eventService.log(`Zeitbonus gewährt ${this.bonus > 0 ? '+' : '-'}${millisecondsToHms(Math.abs(this.bonus), true)}`);
   }
 
   public resetTimer(): void{
-    this.setExamState(ExamState.INITIAL);
     this.setBonus(0);
+    this.setExamState(ExamState.INITIAL);
     this.setStartTime(undefined);
   }
 
@@ -123,6 +131,7 @@ export class TimerService{
   setBonus(duration: number): void{
     this.bonus = duration;
     localStorage.setItem('bonus', this.bonus.toString());
+    this.durationChange.next();
   }
 
   setElapsedDuration(duration: number | undefined): void{
@@ -155,6 +164,7 @@ export class TimerService{
   loadBonus(): void{
     const val: string = localStorage.getItem('bonus') ?? '0';
     this.bonus = parseInt(val);
+    this.durationChange.next();
   }
 
   loadElapsedDuration(): void{

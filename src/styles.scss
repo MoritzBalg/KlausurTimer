@@ -21,4 +21,8 @@ body{
   user-select: none;
 }
 
+.scroll{
+  overflow-y: auto;
+}
+
 @import "style/forms";

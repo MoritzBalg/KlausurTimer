@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TimerService } from '../../services/timer.service';
 import { NgIf } from '@angular/common';
 import { ExamState } from '../../models/exam-state';
+import { EventService } from '../../services/event.service';
 
 @Component({
   selector: 'app-timer-controls',
@@ -14,7 +15,7 @@ import { ExamState } from '../../models/exam-state';
 })
 export class TimerControlsComponent {
 
-  constructor(public timerService: TimerService) {
+  constructor(public timerService: TimerService, private eventService: EventService) {
   }
 
   startExam(): void{
@@ -35,6 +36,7 @@ export class TimerControlsComponent {
 
   resetTimer(): void{
     this.timerService.resetTimer();
+    this.eventService.resetLog();
   }
 
   protected readonly ExamState = ExamState;

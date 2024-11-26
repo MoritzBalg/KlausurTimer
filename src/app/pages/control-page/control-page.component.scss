@@ -1,0 +1,47 @@
+#grid{
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr 1fr;
+  height: 100%;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+#grid>.tile{
+  background-color: white;
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#grid>.tile h4:first-of-type{
+  margin: 0 0 1rem 0;
+}
+
+#grid>.tile>.controls{
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+#grid>.tile.timer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+app-timer{
+  font-size: 4rem;
+}
+
+#timer-controls, #timer-controls>app-timer-controls{
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+}
+::ng-deep #timer-controls button{
+  font-size: 1.2rem;
+}

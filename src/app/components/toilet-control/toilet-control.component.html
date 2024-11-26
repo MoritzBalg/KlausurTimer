@@ -1,0 +1,9 @@
+<span>WC {{index+1}}</span>
+<div class="radio-button-group">
+  <input type="radio" [id]="'toilet-input-'+index+'-vacant'" [name]="'toilet-input-'+index" [(ngModel)]="toilet.state" [value]="ToiletState.VACANT" (ngModelChange)="onChange()">
+  <label i18n [for]="'toilet-input-'+index+'-vacant'" >frei</label>
+  <input type="radio" [id]="'toilet-input-'+index+'-occupied'" [name]="'toilet-input-'+index" [(ngModel)]="toilet.state" [value]="ToiletState.OCCUPIED" (ngModelChange)="onChange()">
+  <label i18n [for]="'toilet-input-'+index+'-occupied'" >besetzt</label>
+  <input type="radio" [id]="'toilet-input-'+index+'-blocked'" [name]="'toilet-input-'+index" [(ngModel)]="toilet.state" [value]="ToiletState.BLOCKED" (ngModelChange)="onChange()">
+  <label i18n [for]="'toilet-input-'+index+'-blocked'" >blockiert</label>
+</div>
