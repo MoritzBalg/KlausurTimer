@@ -9,7 +9,13 @@
   font-weight: lighter;
 }
 
-.input-group > input:not([type=checkbox]):not([type=radio]){
+.input-group > textarea{
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 8rem;
+}
+
+.input-group > input:not([type=checkbox]):not([type=radio]), .input-group > textarea{
   margin-top: 0.25rem;
   width: 100%;
   font-size: large;

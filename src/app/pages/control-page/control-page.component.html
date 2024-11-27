@@ -1,16 +1,16 @@
 <div id="grid">
-  <div class="tile" style="grid-row: 1 / 3; justify-content: space-between">
+  <div class="tile" style="grid-row: 1 / 5; justify-content: space-between">
     <div class="scroll">
       <h4 i18n>Klausureinstellungen</h4>
       <app-exam-settings #examSettings></app-exam-settings>
       <h4 i18n>Anzeigeeinstellungen</h4>
       <app-display-settings #displaySettings></app-display-settings>
     </div>
-    <div class="controls">
+    <div class="settings-controls">
       <button (click)="examSettings.saveChanges(); displaySettings.saveChanges()" i18n >speichern</button>
     </div>
   </div>
-  <div class="tile timer">
+  <div class="tile timer" style="grid-row: 1 / 3">
     <app-duration-display></app-duration-display>
     <app-timer></app-timer>
     <div id="timer-controls">
@@ -18,13 +18,19 @@
       <button (click)="bonusModal.open()"><i class="bi bi-plus"></i> Bonus</button>
     </div>
   </div>
-  <div class="tile">
+  <div class="tile" style="grid-row: 1 / 2">
     <h4 i18n>Toilettenkoordination</h4>
     <app-toilet-controls class="scroll"></app-toilet-controls>
   </div>
-  <div class="tile">
+  <div class="tile" style="grid-row: 3 / 5">
     <h4 i18n>Ereignis-Log</h4>
     <app-event-log class="scroll"></app-event-log>
   </div>
+  <div class="tile" style="grid-row: 2 / 5">
+    <h4 i18n>Hinweise</h4>
+    <app-note-display class="scroll" [editable]="true" [collapsed]="true" (editNote)="noteModal.open($event.id, $event.note)"></app-note-display>
+    <div class="add-note"><button (click)="noteModal.open()"><i class="bi bi-plus"></i> hinzufügen</button></div>
+  </div>
 </div>
 <app-bonus-modal #bonusModal></app-bonus-modal>
+<app-note-modal #noteModal></app-note-modal>

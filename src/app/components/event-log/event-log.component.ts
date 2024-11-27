@@ -15,6 +15,4 @@ import { DatePipe, NgForOf } from '@angular/common';
 export class EventLogComponent {
   constructor(public eventService: EventService) {
   }
-
-  protected readonly EventService = EventService;
 }

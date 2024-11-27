@@ -1,6 +1,6 @@
 #grid{
   display: grid;
-  grid-template: 1fr 1fr / 1fr 1fr 1fr;
+  grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr;
   height: 100%;
   padding: 1rem;
   gap: 1rem;
@@ -19,11 +19,26 @@
   margin: 0 0 1rem 0;
 }
 
-#grid>.tile>.controls{
+#grid>.tile>.settings-controls{
   margin-top: 0.75rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+}
+
+#grid>.tile>.add-note{
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+app-note-display{
+  margin-bottom: auto;
+}
+
+button{
+  font-size: 1rem;
 }
 
 #grid>.tile.timer{
@@ -44,4 +59,8 @@ app-timer{
 }
 ::ng-deep #timer-controls button{
   font-size: 1.2rem;
+}
+
+::ng-deep app-note{
+  background-color: lightgray;
 }

@@ -1,0 +1,21 @@
+<app-modal [title]="'Zeitbonus'" i18n-title (onClose)="onClose()" [initiallyOpen]="false">
+  <div class="form">
+    <div class="input-group">
+      <label i18n>Titel</label>
+      <input type="text" [(ngModel)]="note.title">
+    </div>
+    <div class="input-group">
+      <label i18n>Inhalt *</label>
+      <textarea [(ngModel)]="note.content"></textarea>
+    </div>
+    <div class="input-group">
+      <label i18n>Hinweisgeber(in)</label>
+      <input type="text" [(ngModel)]="note.author">
+    </div>
+  </div>
+  <div class="controls">
+    <button (click)="abort()" i18n >abbrechen</button>
+    <button *ngIf="!id" (click)="saveChanges()" i18n >hinzufügen</button>
+    <button *ngIf="id" (click)="saveChanges()" i18n >speichern</button>
+  </div>
+</app-modal>

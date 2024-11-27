@@ -14,6 +14,7 @@ import { WindowType } from '../../models/window-type';
 import { TimerService } from '../../services/timer.service';
 import { ExamState } from '../../models/exam-state';
 import { DurationDisplayComponent } from '../../components/duration-display/duration-display.component';
+import { NotesDisplayComponent } from '../../components/notes-display/notes-display.component';
 
 @Component({
   selector: 'app-main-page',
@@ -29,6 +30,7 @@ import { DurationDisplayComponent } from '../../components/duration-display/dura
     ToiletDisplayComponent,
     DurationDisplayComponent,
     DatePipe,
+    NotesDisplayComponent,
   ],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss'

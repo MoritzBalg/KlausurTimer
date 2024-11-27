@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { DisplaySettingsComponent } from '../display-settings/display-settings.component';
 import { ExamSettingsComponent } from '../exam-settings/exam-settings.component';
 import { ModalComponent } from '../modal/modal.component';
-import { ViewService } from '../../services/view.service';
 import { TimerService } from '../../services/timer.service';
 import { FormsModule } from '@angular/forms';
 
@@ -22,6 +21,8 @@ export class BonusModalComponent {
   @ViewChild(ModalComponent) modal!: ModalComponent;
   bonusValue: string = '';
 
+  modalTitle: string = $localize`Zeitbonus`;
+
   constructor(private timerService: TimerService) {
   }
 
@@ -39,7 +40,6 @@ export class BonusModalComponent {
 
   saveChanges(): void{
     const bonus = parseFloat(this.bonusValue.replace(',', '.')) * 60 * 1000;
-    console.log(bonus);
     if(typeof bonus === 'number') {
       this.timerService.addBonus(bonus);
       this.modal.close();

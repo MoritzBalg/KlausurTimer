@@ -4,6 +4,7 @@
   display: grid;
   overflow: hidden;
   grid-template: 1fr min-content 1fr / 1fr minmax(30vw, min-content) 1fr;
+  gap: 2rem;
 }
 
 .content-wrapper{
@@ -57,3 +58,17 @@ app-exam-info, app-status-display{
   font-size: 1.2rem;
 }
 
+.notes-wrapper{
+  padding: 1rem;
+  grid-area: 1 / 1 / 4 / 1;
+  overflow-y: auto;
+}
+
+::ng-deep app-note{
+  background-color: white;
+  font-size: x-large;
+}
+
+::ng-deep app-note.header{
+  margin-bottom: 1rem;
+}

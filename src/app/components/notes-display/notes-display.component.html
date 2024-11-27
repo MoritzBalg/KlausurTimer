@@ -1,0 +1,17 @@
+<app-note
+  *ngFor="let note of notesService.getNotes() | keyvalue"
+  [noteId]="note.key"
+  [note]="note.value"
+  [editable]="editable"
+  [collapsed]="collapsed"
+  (editNote)="handleEditNote(note.key, note.value)"
+  (deleteNote)="handleDeleteNote(note.key)"
+>
+</app-note>
+<app-modal [title]="deletionModalTitle" (onClose)="onDeleteModalClose()" #deleteModal [initiallyOpen]="false">
+  <p i18n>Sind Sie sicher, dass Sie diesen Hinweis löschen möchten?</p>
+  <div class="controls">
+    <button (click)="deleteModal.close()" i18n >abbrechen</button>
+    <button (click)="performDeletion()" i18n >löschen</button>
+  </div>
+</app-modal>

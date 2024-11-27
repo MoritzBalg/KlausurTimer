@@ -10,7 +10,8 @@ import { WindowType } from '../../models/window-type';
 import { DurationDisplayComponent } from '../../components/duration-display/duration-display.component';
 import { SettingsModalComponent } from '../../components/settings-modal/settings-modal.component';
 import { BonusModalComponent } from '../../components/bonus-modal/bonus-modal.component';
-import { ModalComponent } from '../../components/modal/modal.component';
+import { NotesDisplayComponent } from '../../components/notes-display/notes-display.component';
+import { NoteModalComponent } from '../../components/note-modal/note-modal.component';
 
 @Component({
   selector: 'app-control-page',
@@ -25,6 +26,8 @@ import { ModalComponent } from '../../components/modal/modal.component';
     DurationDisplayComponent,
     SettingsModalComponent,
     BonusModalComponent,
+    NotesDisplayComponent,
+    NoteModalComponent
   ],
   templateUrl: './control-page.component.html',
   styleUrl: './control-page.component.scss'

@@ -20,6 +20,8 @@ export class SettingsModalComponent implements OnInit{
   @ViewChild(ExamSettingsComponent) examSettings!: ExamSettingsComponent;
   @ViewChild(DisplaySettingsComponent) displaySettings!: DisplaySettingsComponent;
 
+  modalTitle: string = $localize`Einstellungen`;
+
   constructor(private viewService: ViewService) {
   }
 
