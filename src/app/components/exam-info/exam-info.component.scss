@@ -1,0 +1,23 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#title{
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+#subtitle{
+  font-size: 2rem;
+}
+
+#resources{
+  margin-top: 1rem;
+}
+
+#room{
+  margin-top: 0.5rem;
+}
+

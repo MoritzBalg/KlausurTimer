@@ -1,0 +1,74 @@
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+.input-group > label{
+  font-weight: lighter;
+}
+
+.input-group > textarea{
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 8rem;
+}
+
+.input-group > input:not([type=checkbox]):not([type=radio]), .input-group > textarea{
+  margin-top: 0.25rem;
+  width: 100%;
+  font-size: large;
+}
+
+button{
+  border-radius: 0.25rem;
+  border: none;
+  padding: 0.5rem;
+  background-color: darkgray;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: gray;
+}
+
+button:active{
+  color: whitesmoke;
+}
+
+.radio-button-group{
+  display: flex;
+  flex-direction: row;
+}
+
+.radio-button-group label{
+  padding: 0.5rem;
+  cursor: pointer;
+  background-color: darkgrey;
+  display: block;
+}
+
+.radio-button-group label:hover{
+  background-color: gray;
+}
+
+.radio-button-group input:checked+label{
+  background-color: gray;
+}
+
+.radio-button-group label:active{
+  color: whitesmoke;
+}
+
+.radio-button-group label:first-of-type{
+  border-radius: 0.25rem 0 0 0.25rem ;
+}
+
+.radio-button-group label:last-of-type{
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.radio-button-group input[type=radio]{
+  display: none;
+}

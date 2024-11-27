@@ -1,0 +1,29 @@
+@import "bootstrap-icons/font/bootstrap-icons.scss";
+
+*{
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+:root{
+  --primary: rgb(205 205 205);
+  --text-color: #000000;
+}
+
+body{
+  margin: 0;
+  background-color: whitesmoke;
+}
+
+.no-select {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.scroll{
+  overflow-y: auto;
+}
+
+@import "style/forms";
+@import "style/modals";

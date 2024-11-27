@@ -1,0 +1,28 @@
+.controls{
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+button{
+  background-color: lightgray;
+  padding: 0.25rem 0.5rem;
+}
+
+button:hover{
+  background-color: darkgray;
+}
+
+.line{
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.line>input{
+  flex-grow: 1;
+}

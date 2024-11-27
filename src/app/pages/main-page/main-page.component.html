@@ -1,0 +1,17 @@
+<div class="notes-wrapper">
+  <app-note-display></app-note-display>
+</div>
+<div class="content-wrapper">
+  <app-exam-info></app-exam-info>
+  <span id="date" *ngIf="displayConfig.displayDate">{{date | date : 'dd.MM.yyyy'}}</span>
+  <app-timer></app-timer>
+  <app-duration-display *ngIf="displayConfig.displayDuration"></app-duration-display>
+  <app-status-display></app-status-display>
+</div>
+<div class="toilet-display-wrapper">
+  <app-toilet-display></app-toilet-display>
+</div>
+<details id="event-log-drawer" *ngIf="displayConfig.displayEventLog">
+  <summary i18n>Ereignis-Log</summary>
+  <app-event-log ></app-event-log>
+</details>

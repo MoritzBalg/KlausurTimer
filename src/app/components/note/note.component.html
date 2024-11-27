@@ -1,0 +1,27 @@
+<ng-container *ngIf="!collapsed">
+  <ng-container [ngTemplateOutlet]="header"></ng-container>
+  <ng-container [ngTemplateOutlet]="body"></ng-container>
+</ng-container>
+<ng-container *ngIf="collapsed">
+  <details>
+    <summary>
+      <i class="bi bi-caret-right-fill"></i><i class="bi bi-caret-down-fill"></i><ng-container [ngTemplateOutlet]="header"></ng-container>
+    </summary>
+    <ng-container [ngTemplateOutlet]="body"></ng-container>
+  </details>
+</ng-container>
+
+<ng-template #header>
+  <div class="header">
+    <span class="title" *ngIf="note.title"><strong>{{note.title}}</strong></span>
+    <span class="title auxiliary" *ngIf="collapsed && !note.title">{{note.content}}</span>
+    <div *ngIf="editable" class="controls">
+      <button (click)="handleEditNote()" i18n >bearbeiten</button>
+      <button (click)="handleDeleteNote()" i18n >löschen</button>
+    </div>
+  </div>
+</ng-template>
+<ng-template #body>
+  <div class="content">{{note.content}}</div>
+  <div class="author" *ngIf="note.author"><em>-- {{note.author}}</em></div>
+</ng-template>

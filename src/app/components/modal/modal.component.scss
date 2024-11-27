@@ -1,0 +1,43 @@
+:host{
+  background-color: #00000050;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:host.closed{
+  display: none;
+}
+
+.modal-container{
+  width: 400px;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+.modal-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+.modal-body{
+  padding-top: 1rem;
+}
+
+.close-button{
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.bi-x-lg:hover{
+  color: gray;
+}

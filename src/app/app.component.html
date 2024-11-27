@@ -1,0 +1,25 @@
+<div class="main-grid">
+  <header>
+    <div class="logo-wrapper">
+      <img src="logo.svg" alt="Logo H-BRS">
+    </div>
+    <app-clock></app-clock>
+  </header>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+  <footer>
+    <div class="controls">
+      <ng-container *ngIf="windowType === WindowType.ALL_IN_ONE">
+        <button (click)="openControlPage()" i18n><i class="bi bi-dpad"></i> Fernsteuerung</button>
+        <button (click)="openSettings()"  i18n>
+          <i class="bi bi-gear"></i> Einstellungen
+        </button>
+        <app-timer-controls ></app-timer-controls>
+      </ng-container>
+      <button (click)="closeControlPage()" *ngIf="windowType === WindowType.REMOTE_CONTROL" i18n><i class="bi bi-display"></i> Gesamtansicht</button>
+    </div>
+    <app-github-link></app-github-link>
+  </footer>
+</div>
+<app-settings-modal #settingsModal></app-settings-modal>

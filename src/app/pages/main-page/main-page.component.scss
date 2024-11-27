@@ -1,0 +1,74 @@
+:host{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  overflow: hidden;
+  grid-template: 1fr min-content 1fr / 1fr minmax(30vw, min-content) 1fr;
+  gap: 2rem;
+}
+
+.content-wrapper{
+  grid-area: 2 / 2 / 2 / 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+app-duration-display{
+  margin-bottom: 1rem;
+}
+
+app-timer{
+  font-size: 6rem;
+  margin: 0.75rem 0;
+}
+
+app-exam-info, app-status-display{
+  font-size: x-large;
+}
+
+.toilet-display-wrapper{
+  grid-area: 1 / 3 / 1 / 3;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+#event-log-drawer{
+  grid-area: 3 / 3 / 3 / 3;
+  margin-top: auto;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  background-color: darkgrey;
+  padding: 0.5rem;
+  overflow-y: auto;
+  border-top-left-radius: 0.25rem;
+  font-size: large;
+}
+
+#event-log-drawer>app-event-log{
+  display: block;
+  margin-top: 0.5rem;
+}
+
+#date{
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.notes-wrapper{
+  padding: 1rem;
+  grid-area: 1 / 1 / 4 / 1;
+  overflow-y: auto;
+}
+
+::ng-deep app-note{
+  background-color: white;
+  font-size: x-large;
+}
+
+::ng-deep app-note.header{
+  margin-bottom: 1rem;
+}

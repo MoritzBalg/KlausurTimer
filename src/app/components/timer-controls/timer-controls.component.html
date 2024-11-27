@@ -1,0 +1,15 @@
+<button (click)="startExam()" *ngIf="timerService.getState() === ExamState.INITIAL || timerService.getState() === ExamState.FINISHED" i18n>
+  <i class="bi bi-play"></i> Start
+</button>
+<button (click)="pauseExam()" *ngIf="timerService.getState() === ExamState.RUNNING" i18n>
+  <i class="bi bi-pause"></i> Pausieren
+</button>
+<button (click)="resumeExam()" *ngIf="timerService.getState() === ExamState.PAUSED" i18n>
+  <i class="bi bi-play"></i> Fortsetzen
+</button>
+<button (click)="stopExam()" [disabled]="timerService.getState() === ExamState.INITIAL || timerService.getState() === ExamState.FINISHED" i18n>
+  <i class="bi bi-stop"></i> Stop
+</button>
+<button (click)="resetTimer()" [disabled]="timerService.getState() === ExamState.INITIAL" i18n>
+  <i class="bi bi-arrow-counterclockwise"></i> Reset
+</button>
