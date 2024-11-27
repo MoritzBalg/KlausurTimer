@@ -23,6 +23,7 @@ export class ToiletService {
     });
 
     addEventListener('storage', (event: StorageEvent) => this.handleStorageEvent(event));
+    this.loadToilets();
   }
 
   public setToiletCount(value: number): void{

@@ -12,6 +12,7 @@ export class EventService {
 
   constructor() {
     addEventListener('storage', (event: StorageEvent) => this.handleStorageEvent(event));
+    this.loadEventLog();
   }
 
   public log(message: string){
