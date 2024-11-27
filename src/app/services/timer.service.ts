@@ -49,7 +49,7 @@ export class TimerService{
 
   public addBonus(duration: number): void {
     this.setBonus(this.bonus + duration);
-    this.eventService.log(`Zeitbonus gewährt ${this.bonus > 0 ? '+' : '-'}${millisecondsToHms(Math.abs(this.bonus), true)}`);
+    this.eventService.log($localize`Zeitbonus gewährt ${this.bonus > 0 ? '+' : '-'}${millisecondsToHms(Math.abs(this.bonus), true)}`);
   }
 
   public resetTimer(): void{
@@ -60,27 +60,27 @@ export class TimerService{
 
   public startTimer(): void{
     this.setStartTime(new Date());
-    this.eventService.log('Klausur gestartet');
+    this.eventService.log($localize`Klausur gestartet`);
     this.setExamState(ExamState.RUNNING);
   }
 
   public pauseTimer(): void{
     this.setElapsedDuration(Date.now() - (this.startTime?.getTime() ?? 0));
-    this.eventService.log('Klausur pausiert');
+    this.eventService.log($localize`Klausur pausiert`);
     this.setExamState(ExamState.PAUSED);
   }
 
   public resumeTimer(): void{
     this.setStartTime(new Date(Date.now() - (this.elapsedDuration ?? 0)));
     this.setElapsedDuration(undefined);
-    this.eventService.log('Klausur fortgesetzt');
+    this.eventService.log($localize`Klausur fortgesetzt`);
     this.setExamState(ExamState.RUNNING);
   }
 
   public stopTimer(): void{
     if(this.state === ExamState.FINISHED) return;
     this.setStartTime(undefined);
-    this.eventService.log('Klausur beendet');
+    this.eventService.log($localize`Klausur beendet`);
     this.setExamState(ExamState.FINISHED);
   }
 
