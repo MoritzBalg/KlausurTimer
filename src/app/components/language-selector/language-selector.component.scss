@@ -13,4 +13,6 @@ a.disabled {
 
 a, a:hover, a:active, a:visited {
   color: var(--text-color);
+  cursor: pointer;
+  text-decoration: underline;
 }
