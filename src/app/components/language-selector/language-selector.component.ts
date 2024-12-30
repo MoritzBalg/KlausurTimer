@@ -14,6 +14,6 @@ export class LanguageSelectorComponent {
 
     switchToLanguage(language: string) {
       if(language === this.locale) return;
-      window.open(this.router.serializeUrl(this.router.createUrlTree( ['../', language],{queryParams: Object.fromEntries((new URLSearchParams(window.location.search)).entries())})), '_self');
+      window.open(this.router.serializeUrl(this.router.createUrlTree( ['/', language],{queryParams: Object.fromEntries((new URLSearchParams(window.location.search)).entries())})), '_self');
     }
 }
