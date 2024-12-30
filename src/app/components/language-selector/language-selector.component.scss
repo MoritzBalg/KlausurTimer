@@ -1,0 +1,16 @@
+.wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+a.disabled {
+  cursor: default;
+  pointer-events: none;
+  text-decoration: none;
+}
+
+a, a:hover, a:active, a:visited {
+  color: var(--text-color);
+}

@@ -12,11 +12,12 @@ import { SettingsModalComponent } from './components/settings-modal/settings-mod
 import { NgIf } from '@angular/common';
 import { ViewService } from './services/view.service';
 import { WindowType } from './models/window-type';
+import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ClockComponent, GithubLinkComponent, TimerComponent, ExamInfoComponent, StatusDisplayComponent, TimerControlsComponent, ModalComponent, ExamSettingsComponent, SettingsModalComponent, NgIf],
+  imports: [RouterOutlet, ClockComponent, GithubLinkComponent, TimerComponent, ExamInfoComponent, StatusDisplayComponent, TimerControlsComponent, ModalComponent, ExamSettingsComponent, SettingsModalComponent, NgIf, LanguageSelectorComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -19,7 +19,10 @@
       </ng-container>
       <button (click)="closeControlPage()" *ngIf="windowType === WindowType.REMOTE_CONTROL" i18n><i class="bi bi-display"></i> Gesamtansicht</button>
     </div>
-    <app-github-link></app-github-link>
+    <div class="right">
+        <app-language-selector></app-language-selector>
+        <app-github-link></app-github-link>
+    </div>
   </footer>
 </div>
 <app-settings-modal #settingsModal></app-settings-modal>
