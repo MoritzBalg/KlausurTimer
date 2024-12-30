@@ -45,7 +45,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   }
 
   openControlPage():void {
-    window.open(this.router.serializeUrl(this.router.createUrlTree( [''],{queryParams: {billboard: true}})), '_blank', 'popup=true');
+    window.open(this.router.serializeUrl(this.router.createUrlTree( [window.location.pathname],{queryParams: {billboard: true}})), '_blank', 'popup=true');
     this.router.navigate(['control']);
   }
 
