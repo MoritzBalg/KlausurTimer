@@ -31,13 +31,13 @@ jobs:
         cache-dependency-path: package-lock.json
     - run: npm ci
       name: Install Dependencies
-    - run: npm run build --base-href=/KlausurTimer/
+    - run: npm run build --base-href=/
       name: Build SPA
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: ./dist
-      
+        path: ./dist/exam-timer/browser
+
   deploy:
     name: Deploy to Github Pages
     needs: build
@@ -48,7 +48,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
