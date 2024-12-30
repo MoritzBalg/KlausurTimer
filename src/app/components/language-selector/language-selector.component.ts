@@ -12,8 +12,8 @@ export class LanguageSelectorComponent {
     constructor(@Inject(LOCALE_ID) public locale: string, private router: Router) {
     }
 
-    switchToLanguage(language: string) {
-      if(language === this.locale) return;
-      window.open(this.router.serializeUrl(this.router.createUrlTree( ['/', language],{queryParams: Object.fromEntries((new URLSearchParams(window.location.search)).entries())})), '_self');
+    switchToLocale(targetLocale: string) {
+      if(targetLocale === this.locale) return;
+      window.open(this.router.serializeUrl(this.router.createUrlTree( [window.location.pathname.replace(`/${this.locale}`, `/${targetLocale}`)],{queryParams: Object.fromEntries((new URLSearchParams(window.location.search)).entries())})), '_self');
     }
 }
