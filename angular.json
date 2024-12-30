@@ -14,10 +14,14 @@
       "sourceRoot": "src",
       "prefix": "app",
       "i18n": {
-        "sourceLocale": "de",
+        "sourceLocale": {
+          "code": "de",
+          "baseHref": "/KlausurTimer/de/"
+        },
         "locales": {
           "en": {
-            "translation": "src/locale/messages.en.json"
+            "translation": "src/locale/messages.en.json",
+            "baseHref": "/KlausurTimer/en/"
           }
         }
       },

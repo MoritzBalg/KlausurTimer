@@ -33,6 +33,8 @@ jobs:
       name: Install Dependencies
     - run: npm run build --base-href=/
       name: Build SPA
+    - run: cp ./index.html ./dist/exam-timer/browser/
+      name: Add language-dependent Redirection
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
